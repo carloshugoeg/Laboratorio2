@@ -26,7 +26,13 @@ namespace Laboratorio2
             Console.WriteLine("--------------");
             Console.WriteLine("Numero de habitaccion: " + Numero);
             Console.WriteLine("Precio habitacion: " + PrecioNoche);
-            Console.WriteLine("Disponible: " + Disponible);
+            Console.Write("Disponible: " + Disponible);
+            if (Disponible)
+            {
+                Console.WriteLine("Si");
+            }
+            else Console.WriteLine("No");
+
             if (ClienteAsignado != null)
             {
                 Console.WriteLine("Cliente Asignado: " + ClienteAsignado);

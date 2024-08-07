@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Laboratorio2
 {
-    internal class HabitacionDoble : HabitacionSimple
+    internal class HabitacionDeluxe : HabitacionSimple
     {
-        public bool VistaMar { get; set; }
-        public HabitacionDoble(int numero, double precioNoche, int numeroCamas, bool vistaMar) : base(numero, precioNoche, numeroCamas)
+        public List<string> ServiciosExtra { get; set; }
+        public HabitacionDeluxe(int numero, double precioNoche, int numeroCamas) : base(numero, precioNoche, numeroCamas)
         {
-            VistaMar = vistaMar;
+
         }
 
         public override void MostrarInformacion()

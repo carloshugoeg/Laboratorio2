@@ -6,19 +6,22 @@ using System.Threading.Tasks;
 
 namespace Laboratorio2
 {
-    internal class HabitacionDoble : HabitacionSimple
+    internal class Suite : Habitacion
     {
-        public bool VistaMar { get; set; }
-        public HabitacionDoble(int numero, double precioNoche, int numeroCamas, bool vistaMar) : base(numero, precioNoche, numeroCamas)
+        public int NumeroHabitaciones { get; set; }
+        public bool TieneJacuzzi {  get; set; }
+        public Suite(int numero, double precioNoche, int numeroHabitaciones, bool tieneJacuzzi) : base(numero, precioNoche)
         {
-            VistaMar = vistaMar;
+            NumeroHabitaciones = numeroHabitaciones;
+            TieneJacuzzi = tieneJacuzzi;
         }
 
         public override void MostrarInformacion()
         {
             base.MostrarInformacion();
-            Console.Write("Vista al Mar: ");
-            if (VistaMar)
+            Console.WriteLine("Numero de Habitaciones: ");
+            Console.Write("Tiene Jacuzzi: ");
+            if (TieneJacuzzi)
             {
                 Console.WriteLine("Si");
             }
