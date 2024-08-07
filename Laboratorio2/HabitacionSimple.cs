@@ -31,5 +31,7 @@ namespace Laboratorio2
         {
             return base.BuscarHabitacion(habitaciones);
         }
+        public override void LiberarHabitacion(List<Habitacion> habitaciones) => base.LiberarHabitacion(habitaciones);
+        public override void EliminarHabitacion(List<Habitacion> habitaciones) => base.EliminarHabitacion(habitaciones);
     }
 }

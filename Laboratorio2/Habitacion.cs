@@ -117,5 +117,31 @@ namespace Laboratorio2
             if (encontrada) return indice;
             else return -1;
         }
+
+        public virtual void LiberarHabitacion(List<Habitacion> habitaciones)
+        {
+            int indice = BuscarHabitacion(habitaciones);
+            if (indice >= 0)
+            {
+                Console.WriteLine("Habitacion Liberada Correctamente");
+                Console.ReadLine();
+                habitaciones[indice].CambiarDisponibilidad(false);
+                habitaciones[indice].ClienteAsignado = "";
+                return;
+            }
+            else Console.WriteLine("No se encontro habitacion");
+        }
+        public virtual void EliminarHabitacion(List<Habitacion> habitaciones)
+        {
+            int indice = BuscarHabitacion(habitaciones);
+            if (indice >= 0)
+            {
+                Console.WriteLine("Habitacion Eliminada Correctamente");
+                Console.ReadLine();
+                habitaciones.RemoveAt(indice);
+                return;
+            }
+            else Console.WriteLine("No se encontro habitacion");
+        }
     }
 }
