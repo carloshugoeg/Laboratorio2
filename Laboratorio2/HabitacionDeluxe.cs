@@ -17,12 +17,10 @@ namespace Laboratorio2
         public override void MostrarInformacion()
         {
             base.MostrarInformacion();
-            Console.Write("Vista al Mar: ");
-            if (VistaMar)
+            foreach (string s in ServiciosExtra)
             {
-                Console.WriteLine("Si");
+                Console.WriteLine("Extra: ");
             }
-            else Console.WriteLine("No");
         }
 
         public override void CambiarDisponibilidad(bool disponible) => base.CambiarDisponibilidad(disponible);
@@ -35,6 +33,22 @@ namespace Laboratorio2
         public override int BuscarHabitacion(List<Habitacion> habitaciones)
         {
             return base.BuscarHabitacion(habitaciones);
+        }
+        public void AgregarServicios()
+        {
+            List<string> servicios = new List<string>();
+            do
+            {
+                Console.Write("Servicio Extra: ");
+                string servicio = Console.ReadLine();
+                servicios.Add(servicio);
+                Console.Write("\nDesea Agregar otro servicio? y/n  ");
+                string opcion = Console.ReadLine().ToLower().Trim();
+                if(opcion.Equals("y"))
+                {
+                    break;
+                }
+            } while(true);
         }
     }
 }
