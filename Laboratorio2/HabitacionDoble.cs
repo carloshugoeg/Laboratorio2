@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Laboratorio2
 {
-    internal class HabitacionSimple : Habitacion
+    internal class HabitacionDoble : HabitacionSimple
     {
-        public int NumeroCamas { get; set; }
-        public HabitacionSimple(int numero, double precioNoche, int numeroCamas) : base(numero, precioNoche)
+        public bool VistaMar { get; set; }
+        public HabitacionDoble(int numero, double precioNoche, int numeroCamas, bool vistaMar) : base(numero, precioNoche, numeroCamas)
         {
             NumeroCamas = numeroCamas;
         }

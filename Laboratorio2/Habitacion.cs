@@ -43,7 +43,7 @@ namespace Laboratorio2
             Console.ReadLine();
             Console.Clear();
         }
-        public double PedirPrecio()
+        public virtual double PedirPrecio()
         {
             do
             {
