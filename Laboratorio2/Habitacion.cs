@@ -43,6 +43,51 @@ namespace Laboratorio2
             Console.ReadLine();
             Console.Clear();
         }
+        public double PedirPrecio()
+        {
+            do
+            {
+                try
+                {
+
+                    double precio;
+                    do
+                    {
+                        Console.Write("Ingrese el precio de habitacion: Q.");
+                        precio = Math.Abs(double.Parse(Console.ReadLine()));
+                        if (precio == 0 || precio == null)
+                        {
+                            Console.WriteLine("Valor no puede ser 0");
+                            Console.ReadLine();
+                        }
+                    } while (precio == 0);
+                    return precio;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("INPUT INVALIDO");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine("EL numero es demasiado grande");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("ERROR");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                }
+            } while (true);
+        }
 
         public virtual int BuscarHabitacion(List<Habitacion> habitaciones)
         {
