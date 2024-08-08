@@ -26,7 +26,7 @@ namespace Laboratorio2
             Console.WriteLine("--------------");
             Console.WriteLine("Numero de habitaccion: " + Numero);
             Console.WriteLine("Precio habitacion: " + PrecioNoche);
-            Console.Write("Disponible: " + Disponible);
+            Console.Write("Disponible: ");
             if (Disponible)
             {
                 Console.WriteLine("Si");
@@ -44,8 +44,11 @@ namespace Laboratorio2
         public virtual void AsignarCliente(string cliente)
         {
             ClienteAsignado = cliente;
-            Console.WriteLine($"Cliente: {cliente}");
-            Console.WriteLine("CLiente asignado correctamente");
+            Console.ForegroundColor  = ConsoleColor.Green;
+            Console.WriteLine($"\n\nCliente: {cliente}");
+            Console.Write("Cliente asignado correctamente");
+            CambiarDisponibilidad(false);
+            Console.ForegroundColor = ConsoleColor.White;
             Console.ReadLine();
             Console.Clear();
         }
@@ -98,13 +101,22 @@ namespace Laboratorio2
         public virtual int BuscarHabitacion(List<Habitacion> habitaciones)
         {
             Console.WriteLine("--------BUSCAR HABITACION---------");
-            Console.Write("Ingrese Numero de habitacion: ");
-            string habitacionBuscada = Console.ReadLine();
+            int habitacionBuscada;
+            do
+            {
+                Console.Write("Ingrese Numero de habitacion: ");
+                habitacionBuscada = PedirNumero();
+                if (habitacionBuscada >= 0)
+                {
+                    break;
+                }
+
+            } while (true);
             int indice = 0;
             bool encontrada = false;
             foreach (Habitacion habitacion in habitaciones)
             {
-                if (habitacion.Numero != Numero)
+                if (habitacion.Numero != habitacionBuscada)
                 {
                     indice++;
                 }
@@ -117,7 +129,53 @@ namespace Laboratorio2
             if (encontrada) return indice;
             else return -1;
         }
+        public int PedirNumero()
+        {
+            do
+            {
+                try
+                {
 
+                    int numero;
+                    do
+                    {
+                        numero = int.Parse(Console.ReadLine());
+                        if (numero == 0 || numero == null)
+                        {
+                            Console.WriteLine("Valor no puede ser 0");
+                            Console.ReadLine();
+                        }
+                    } while (numero == 0);
+                    return numero;
+                }
+                catch (FormatException ex)
+                {
+                    Console.WriteLine("INPUT INVALIDO");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                    return -1;
+                }
+                catch (ArgumentOutOfRangeException ex)
+                {
+                    Console.WriteLine("EL numero es demasiado grande");
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                    return -1;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("ERROR");
+                    Console.WriteLine(ex.Message);
+                    Console.ReadLine();
+                    Console.Clear();
+                    Console.WriteLine("-----Nueva Habitacion-----");
+                    return -1;
+                }
+            } while (true);
+        }
         public virtual void LiberarHabitacion(List<Habitacion> habitaciones)
         {
             int indice = BuscarHabitacion(habitaciones);

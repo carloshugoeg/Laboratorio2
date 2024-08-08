@@ -19,9 +19,10 @@ namespace Laboratorio2
             base.MostrarInformacion();
             foreach (string s in ServiciosExtra)
             {
-                Console.WriteLine("Extra: ");
+                Console.WriteLine("Extra: " + s);
             }
         }
+
 
         public override void CambiarDisponibilidad(bool disponible) => base.CambiarDisponibilidad(disponible);
 
@@ -44,10 +45,11 @@ namespace Laboratorio2
                 servicios.Add(servicio);
                 Console.Write("\nDesea Agregar otro servicio? y/n  ");
                 string opcion = Console.ReadLine().ToLower().Trim();
-                if(opcion.Equals("y"))
+                if(opcion.Equals("n"))
                 {
                     break;
                 }
+                ServiciosExtra = servicios;
             } while(true);
         }
     }

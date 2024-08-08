@@ -17,7 +17,7 @@ namespace Laboratorio2
         public override void MostrarInformacion()
         {
             base.MostrarInformacion();
-            Console.WriteLine("Numero de camas: ");
+            Console.WriteLine("Numero de camas: " + NumeroCamas);
         }
 
         public override void CambiarDisponibilidad(bool disponible) => base.CambiarDisponibilidad(disponible);
